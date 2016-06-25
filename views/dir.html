@@ -13,7 +13,7 @@
   <p>文件层次: {{dir}}</p>
   <ul>
     {% for dir in dirMeta %}
-    <li><a href="{{dir.url}}" target="{{dir.dir ? '' : '_blank'}}">{{dir.name}}</a></li>
+    <li><a href="{{dir.url}}" target="{{dir.target}}">{{dir.name}}</a></li>
     {% endfor %}
   </ul>
 </body>
