@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style type="text/css">
+    li {
+      height: 36px;
+    }
+  </style>
+  <title>{{title}}</title>
+</head>
+<body>
+  <p>文件层次: {{dir}}</p>
+  <ul>
+    {% for dir in dirMeta %}
+    <li><a href="{{dir.url}}" target="{{dir.dir ? '' : '_blank'}}">{{dir.name}}</a></li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
