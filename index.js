@@ -73,6 +73,7 @@ function* processFile() {
 app.use(function*() {
   let req = this.req;
   let url = req.url || '/';
+  url = url.split('?')[0];
   this.url = urlencode.decode(url, 'utf8');
   try {
     let s = yield stat(rootDir + this.url);
