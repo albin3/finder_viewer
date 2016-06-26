@@ -84,7 +84,6 @@ app.use(function*() {
     }
   } catch (e) {
     console.log(e);
-    throw e;
     return this.body = '不是正常目录,无法访问';
   }
 });
