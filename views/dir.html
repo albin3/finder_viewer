@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <style type="text/css">
     li {
-      height: 36px;
+      min-height: 36px;
     }
   </style>
   <title>{{title}}</title>
@@ -13,7 +13,14 @@
   <p>文件层次: {{dir}}</p>
   <ul>
     {% for dir in dirMeta %}
-    <li><a href="{{dir.url}}" target="{{dir.target}}">{{dir.name}}</a></li>
+    <li>
+      <a href="{{dir.url}}" target="{{dir.target}}">{{dir.name}}</a>
+      {% if dir.isImg %}
+        <div>
+          <img style="height: 200px" src="{{dir.url}}" />
+        </div>
+      {% endif %}
+    </li>
     {% endfor %}
   </ul>
 </body>

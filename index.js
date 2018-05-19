@@ -31,11 +31,13 @@ function* processDir() {
     }
   });
   let dirMeta = isdir.map((b, idx) => {
+    const resultUrl = url + dir[idx] + (b ? '/' : '');
     return {
       name: dir[idx],
-      url: url + dir[idx] + (b ? '/' : ''),
+      url: resultUrl,
       target: b ? '' : '_blank',
-      dir: b
+      dir: b,
+      isImg: /.+(\.JPG|\.jpg|\.PNG|\.png|\.JPEG|\.jpeg|\.GIF|\.gif|\.BMP|\.bmp)$/.test(resultUrl)
     }
   });
 
@@ -61,10 +63,10 @@ function* processDir() {
 function* processFile() {
   let url = this.url;
   this.type = 'text/plain';
-  if (/.+[\.jpg|\.png|\.jpeg|\.gif|\.bmp]$/.test(url)) {
+  if (/.+(\.jpg|\.png|\.jpeg|\.gif|\.bmp)$/.test(url)) {
     this.type = 'image/png';
   }
-  if (/.+[\.json]$/.test(url)) {
+  if (/.+(\.json)$/.test(url)) {
     this.type = 'application/json';
   }
   this.body = yield readFile(rootDir + url);
